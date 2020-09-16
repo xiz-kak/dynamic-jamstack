@@ -10,6 +10,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "faunadb": "^3.0.1",
     "netlify-identity-widget": "^1.9.1",
     "netlify-lambda": "^2.0.1",
     "next": "9.5.3",

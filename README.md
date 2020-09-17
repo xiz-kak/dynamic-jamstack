@@ -1,10 +1,8 @@
 # Dynamic web service on JAMStack
 
-## About this application
-
 This application demonstrates the implementation of the dynamic logic on a JAMStack web site.
 
-### Tech stack
+## Tech stack
 
 - Static site generator - [Next.js](https://nextjs.org/)
 - Source code management - [GitHub](https://github.com/)

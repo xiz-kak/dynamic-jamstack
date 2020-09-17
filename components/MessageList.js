@@ -23,8 +23,8 @@ class MessageList extends Component {
           return null
         }
 
-        const messages = resJson.map((message, i) => {
-          const { data, ref } = message
+        const messages = resJson.reverse().map((message, i) => {
+          const { data } = message
           return data
         })
         this.setState({ messages: messages})

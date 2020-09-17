@@ -1,30 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dynamic web service on JAMStack
 
-## Getting Started
+## About this application
 
-First, run the development server:
+This application demonstrates the implementation of the dynamic logic on a JAMStack web site.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Tech stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Static site generator - [Next.js](https://nextjs.org/)
+- Source code management - [GitHub](https://github.com/)
+- Hosting/CDN - [Netlify](https://www.netlify.com/)
+- Database - [FaunaDB](https://fauna.com/)
+- Headless CMS - N/A (This application focus on dynamic part of web service.)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Deploy with one click
 
-## Learn More
+Click the [Deploy to netlify](https://app.netlify.com/start/deploy?repository=https://github.com/xiz-kak/dynamic-jamstack&stack=fauna) button.
 
-To learn more about Next.js, take a look at the following resources:
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/xiz-kak/dynamic-jamstack&stack=fauna)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisite
+You need to [set up FaunaDB](#set-up-faunadb) and obtain server secret key.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Set up FaunaDB
 
-## Deploy on Vercel
+First, create your own account at [FaunaDB](https://fauna.com/).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create the followings at the [dashboard](https://dashboard.fauna.com/) of FaunaDB.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Database - name: You can name as you like.
+- Collection - name: `messages`
+- Index - name: `all_messages` Leave blank at Terms and Values

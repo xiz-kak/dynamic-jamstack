@@ -17,9 +17,36 @@ class MessageForm extends Component {
   }
 
   handleSubmit(event) {
-    this.props.onSendMessage( this.state.body )
+    this.sendMessage()
     this.setState({ body: '' })
     event.preventDefault()
+  }
+
+  sendMessage() {
+    const { body } = this.state
+
+    this.generateHeaders().then((headers) => {
+      fetch('/.netlify/functions/messages-create', {
+        body: JSON.stringify({ body }),
+        method: 'POST',
+        headers
+      }).then(res => {
+        console.log('API response', res.json())
+        this.props.onSendMessage()
+      }).catch(err => {
+        console.log('API error', err)
+      })
+    })
+  }
+
+  generateHeaders() {
+    const headers = { "Content-Type": "application/json" }
+    if (netlifyIdentity.currentUser()) {
+      return netlifyIdentity.currentUser().jwt().then((token) => {
+        return { ...headers, Authorization: `Bearer ${token}` }
+      })
+    }
+    return Promise.resolve(headers)
   }
 
   render() {

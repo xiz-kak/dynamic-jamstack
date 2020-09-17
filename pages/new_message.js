@@ -23,33 +23,8 @@ export default function NewMessage() {
     }
   }, [])
 
-  let sendMessage = (message) => {
-    const data = {
-      body: message
-    }
-
-    generateHeaders().then((headers) => {
-      fetch('/.netlify/functions/messages-create', {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(data)
-      }).then(res => {
-        console.log('API response', res.json())
-        window.location.href = '/'
-      }).catch(err => {
-        console.log('API error', err)
-      })
-    })
-  }
-
-  let generateHeaders = () =>  {
-    const headers = { "Content-Type": "application/json" };
-    if (netlifyIdentity.currentUser()) {
-      return netlifyIdentity.currentUser().jwt().then((token) => {
-        return { ...headers, Authorization: `Bearer ${token}` };
-      })
-    }
-    return Promise.resolve(headers);
+  let backHome = () => {
+    window.location.href = '/'
   }
 
   return (
@@ -63,7 +38,7 @@ export default function NewMessage() {
         {loggedIn ? (
           <MessageForm
             fullName={ user?.user_metadata.full_name }
-            onSendMessage={ sendMessage }
+            onSendMessage={ backHome }
           />
         ) : (
           <main>

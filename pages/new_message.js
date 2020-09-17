@@ -24,22 +24,32 @@ export default function NewMessage() {
   }, [])
 
   let sendMessage = (message) => {
-    console.log(message)
-
     const data = {
-      name: user?.user_metadata.full_name,
       body: message
     }
 
-    fetch('/.netlify/functions/messages-create', {
-      body: JSON.stringify(data),
-      method: 'POST'
-    }).then(res => {
-      console.log('API response', res.json())
-      window.location.href = '/'
-    }).catch(err => {
-      console.log('API error', err)
+    generateHeaders().then((headers) => {
+      fetch('/.netlify/functions/messages-create', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(data)
+      }).then(res => {
+        console.log('API response', res.json())
+        window.location.href = '/'
+      }).catch(err => {
+        console.log('API error', err)
+      })
     })
+  }
+
+  let generateHeaders = () =>  {
+    const headers = { "Content-Type": "application/json" };
+    if (netlifyIdentity.currentUser()) {
+      return netlifyIdentity.currentUser().jwt().then((token) => {
+        return { ...headers, Authorization: `Bearer ${token}` };
+      })
+    }
+    return Promise.resolve(headers);
   }
 
   return (

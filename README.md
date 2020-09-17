@@ -17,7 +17,7 @@ Click the [Deploy to netlify](https://app.netlify.com/start/deploy?repository=ht
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/xiz-kak/dynamic-jamstack&stack=fauna)
 
 ### Prerequisite
-You need to [set up FaunaDB](#set-up-faunadb) and obtain server secret key.
+You need to [set up FaunaDB](#set-up-faunadb) and obtain server key's secret.
 
 ## Set up FaunaDB
 
@@ -25,6 +25,10 @@ First, create your own account at [FaunaDB](https://fauna.com/).
 
 Create the followings at the [dashboard](https://dashboard.fauna.com/) of FaunaDB.
 
-- Database - name: You can name as you like.
+- Database - name: Any (as you like)
 - Collection - name: `messages`
-- Index - name: `all_messages` Leave blank at Terms and Values
+- Index - name: `all_messages` (Leave blank at Terms and Values)
+
+Obtain Key's Secret after creating a new key at the SECURITY menu.
+
+This secret will never be displayed again, so save somewhere safe.

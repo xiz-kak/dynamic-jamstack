@@ -1,6 +1,8 @@
-# Dynamic web service on JAMStack
+# Dynamic web service on Jamstack
 
-This application demonstrates the implementation of the dynamic logic on a JAMStack web site.
+This application demonstrates the implementation of the dynamic logic on a Jamstack web site.
+
+Refer to [my blog post](https://tech.unifa-e.com/entry/dynamic-jamstack) for the background of this project.
 
 ## Tech stack
 
@@ -18,6 +20,9 @@ Click the [Deploy to netlify](https://app.netlify.com/start/deploy?repository=ht
 
 ### Prerequisite
 You need to [set up FaunaDB](#set-up-faunadb) and obtain server key's secret.
+
+### After deploy
+You need to [set up Netlify Identity](#set-up-netlify-identity).
 
 ## Tutorial from scratch
 
